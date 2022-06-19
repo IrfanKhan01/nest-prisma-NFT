@@ -3,7 +3,7 @@ import { Prisma, Asset } from '@prisma/client';
 import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
-export class AssetService {
+export class AssetsService {
   constructor(private prisma: PrismaService) {}
 
   async asset(
@@ -17,9 +17,9 @@ export class AssetService {
   async assets(params: {
     skip?: number;
     take?: number;
-    cursor: Prisma.AssetWhereUniqueInput;
-    where: Prisma.AssetWhereInput;
-    orderBy: Prisma.AssetOrderByWithRelationInput;
+    cursor?: Prisma.AssetWhereUniqueInput;
+    where?: Prisma.AssetWhereInput;
+    orderBy?: Prisma.AssetOrderByWithRelationInput;
   }): Promise<Asset[]> {
     const { skip, take, cursor, where, orderBy } = params;
     return this.prisma.asset.findMany({
